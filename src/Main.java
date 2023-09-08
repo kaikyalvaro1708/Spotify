@@ -1,34 +1,55 @@
-import models.conteudo.Musica;
+import models.conteudo.Favorites;
+import models.conteudo.Music;
 import models.conteudo.Podcast;
 
 public class Main {
     public static void main(String[] args) {
         Podcast podcast = new Podcast();
-        Musica musica = new Musica();
+        Music music = new Music();
+        Favorites favorites = new Favorites();
 
-        //Músicas
-        musica.setNome("Numb");
-        musica.setCantor("Linkin Park");
-        musica.setGenero("Rock");
-        musica.setFavoritos(true);
-        musica.setAnoDeLancamento(2006);
-        musica.setDuracaoEmMinutos(3);
 
-        musica.exibeFichaTecnica();
-        System.out.println("Banda: " + musica.getCantor());
-        System.out.println("Gênero musical: " + musica.getGenero());
+        //Musics
+        music.setName("Numb");
+        music.setArtist("Linkin Park");
+        music.setMusicalGenre("Rock");
+        music.setReleaseYear(2006);
+        music.setDurationMinutes(3);
+
+        music.displaySheet();
+        System.out.println("Banda: " + music.getArtist());
+        System.out.println("Gênero musical: " + music.getMusicalGenre());
+        favorites.includes(music);
+
+
+        for( int i=0; i < 1000; i++){
+            music.reproduce();
+        }
+        for(int i=0; i < 50; i++){
+            music.like();
+        }
 
         System.out.println("-----------------------------------------");
 
         //Podcast
-        podcast.setNome("Podpah");
-        podcast.setApresentador("Igão e Mítico");
-        podcast.setNicho("Geral");
-        podcast.setAnoDeLancamento(2020);
-        podcast.setDuracaoEmMinutos(100);
+        podcast.setName("Podpah");
+        podcast.setHost("Igão e Mítico");
+        podcast.setNiche("Geral");
+        podcast.setReleaseYear(2020);
+        podcast.setDurationMinutes(100);
 
-        podcast.exibeFichaTecnica();
-        System.out.println("Apresentadores: " + podcast.getApresentador());
-        System.out.println("Nicho: " + podcast.getNicho());
+        podcast.displaySheet();
+        System.out.println("Apresentadores: " + podcast.getHost());
+        System.out.println("Nicho: " + podcast.getNiche());
+
+        for( int i=0; i < 5000; i++){
+            podcast.reproduce();
+        }
+        for(int i=0; i < 1000; i++) {
+            podcast.like();
+        }
+
+        favorites.includes(podcast);
+
     }
 }
